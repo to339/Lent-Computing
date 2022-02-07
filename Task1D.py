@@ -13,7 +13,7 @@ def run():
     print(stations_list1)
     print()
 
-    stations_list2 = stations_on_rivers['River Aire']
+    stations_list2 = stations_on_rivers['Spen Beck']
     stations_list2.sort()
     print(stations_list2)
     print()
