@@ -58,3 +58,25 @@ def rivers_by_station_number(stations):
 
 
 
+def stations_within_radius(stations, centre, r):
+
+    Answer = []
+    
+    for station in stations:
+        
+        Data = haversine(centre,station.coord)
+        
+        
+        
+        
+        if Data < r:
+            Answer.append(station.river)
+
+
+    Answer = sorted(Answer)
+
+
+
+
+        
+    return (Answer)
