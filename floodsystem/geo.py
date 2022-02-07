@@ -15,7 +15,7 @@ def rivers_with_stations(stations):
     #List of all rivers with a monitoring station
     river_name = []
     for station in stations:
-        if station.river not in river_name:
+        if station.river not in river_name: 
             river_name.append(station.river)
     
     river_name.sort()
