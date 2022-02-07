@@ -5,8 +5,9 @@
 geographical data.
 
 """
-
+from haversine import haversine 
 from .utils import sorted_by_key  # noqa
+
 
 
 
@@ -31,6 +32,22 @@ def stations_by_river(stations):
             stations_on_river[key] = [station.name]
     return stations_on_river
 
+def stations_by_distance(stations,p):
+    stations_name = []
+    distance = []
+    
+    for station in stations:
+        stations_name.append([station.river,station.town])
+        Data = haversine(p,station.coord)
+        distance.append(Data)
+        lst_tuple = list(zip(stations_name,distance))
+        sorted_by_second = sorted(lst_tuple, key=lambda tup: tup[1])
+        
+        Answer = [sorted_by_second[:10]]
+        Answer.append(sorted_by_second[-10:])
+
+        
+    return(Answer)
     
 
 
