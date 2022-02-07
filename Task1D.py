@@ -21,7 +21,7 @@ def run():
     stations_list3 = stations_on_rivers['River Thames']
     stations_list3.sort()
     print(stations_list3)
-    print() b
+    print()
 
 if __name__ == "__main__":
     print("*** Task 1D: CUED Part IA Flood Warning System ***")
