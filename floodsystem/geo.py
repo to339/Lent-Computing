@@ -12,7 +12,7 @@ from .utils import sorted_by_key  # noqa
 
 
 
-#Task 1A
+#Task 1B
 def stations_by_distance(stations,p):
     stations_name = []
     distance = []
@@ -30,7 +30,7 @@ def stations_by_distance(stations,p):
         
     return(Answer)
     
-#Task 1B   
+#Task 1C   
 def stations_within_radius(stations, centre, r):
 
     Answer = []
