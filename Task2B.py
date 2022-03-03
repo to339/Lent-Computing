@@ -7,9 +7,8 @@ stations = build_station_list()
 
 update_water_levels(stations)
 
-for station in stations:
-    print (station.relative_water_level())
 
-list = stations_level_over_threshold(stations,100)
+
+list = stations_level_over_threshold(stations,3)
 list.sort(key=lambda x:x[1])
 print(list)

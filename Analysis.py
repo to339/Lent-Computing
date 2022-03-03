@@ -34,11 +34,10 @@ for stations in level_values:
     
 
 # Plot original data points
-    plt.plot(x, y, '.')
+    plt.plot(x-d0, y, '.')
 
 # Plot polynomial fit at 30 points along interval
-    x1 = np.linspace(x[0], x[-1], 30)
-    plt.plot(x1, poly(x1))
+    plt.plot(x-d0, poly(x-d0))
 
 # Display plot
     plt.show()
