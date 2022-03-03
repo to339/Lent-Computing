@@ -15,3 +15,5 @@ for stations in level_values:
     dt = 2
     dates, levels = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
     plot_water_levels(stations, dates, levels)
+
+plot_water_levels(stations, dates, levels)
