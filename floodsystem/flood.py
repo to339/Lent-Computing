@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+from os import stat
+from floodsystem.stationdata import build_station_list
+from floodsystem.stationdata import update_water_levels
+
+stations = build_station_list()
+
+update_water_levels(stations)
+
+def stations_level_over_threshold(stations, tol):
+    a = []
+    
+    for station in stations:
+        if station.relative_water_level() is not None and station.relative_water_level() > tol:
+            a.append((station.name,station.relative_water_level()))
+    return a
+
+print (stations_level_over_threshold(stations,0.1))
+        
+=======
 from haversine import haversine 
 from .utils import sorted_by_key
 import matplotlib.pyplot as plt
@@ -47,6 +67,13 @@ def flood_warnings(yesterdays_date, todays_date, stations, r):
     yesterdays_ratio = stations.dates(yesterdays_date)
     day2day_ratio = stations.r - yesterdays_ratio
     #If the ratio is over 1 and rising compared to yesterday's, issue a severe flood warning
+<<<<<<< HEAD
+    #If the change in ratio is over 1, issue a severe flood warning
+    #If the change in ratio is over 0.75 issue a high flood warning
+    #If the ratio is over 0.5 and the change in ratio is over 0.5 issue a low flood warning
+    
+>>>>>>> dca5de76c1a54441c93188f53eca9cd3029fdbc1
+=======
     if r > 1:
         if day2day_ratio > 0:
             print ("SEVERE FLOOD WARNING")
@@ -80,3 +107,4 @@ def flood_warnings(yesterdays_date, todays_date, stations, r):
     
 
     
+>>>>>>> 1a42af3811c4515636f38b176c8775d6e77c658e

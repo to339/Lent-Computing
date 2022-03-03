@@ -6,7 +6,9 @@ for manipulating/modifying station data
 
 """
 
+from re import X
 from . import datafetcher
+
 
 
 
@@ -26,6 +28,7 @@ class MonitoringStation:
         if isinstance(label, list):
             self.name = label[0]
 
+        x = typical_range
         self.coord = coord
         self.typical_range = typical_range
         self.river = river
@@ -51,6 +54,19 @@ class MonitoringStation:
                 return False
             else:
                 return True
+    
+    def relative_water_level(self):
+        if self.typical_range is None:
+            return None
+        elif self.typical_range[1]<self.typical_range[0]:
+            return None
+        elif self.latest_level is None:
+            return None
+        
+        else:
+            r = (self.latest_level - self.typical_range[0]) / (self.typical_range[1]-self.typical_range[0])
+            
+            return r
                 
     
 def inconsistent_typical_range_stations(stations):
@@ -63,7 +79,8 @@ def inconsistent_typical_range_stations(stations):
      return Answer
 
 
-        
+
+
 
         
 
