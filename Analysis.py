@@ -5,6 +5,8 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.flood import *
 import datetime
 import numpy as np
+import matplotlib
+
 
 # Build list of stations
 stations = build_station_list()
@@ -17,15 +19,19 @@ for stations in level_values:
     dates, levels = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
     
 
-    x = dates
-    y = stations
+    
+    x = matplotlib.dates.date2num(dates)
+    y = levels
 
     # Find coefficients of best-fit polynomial f(x) of degree 4
-    p_coeff = np.polyfit(x, y, 4)
+    d0 = x[0]
+    p_coeff = np.polyfit(x-d0, y, 4)
+    
 
 # Convert coefficient into a polynomial that can be evaluated,
 # e.g. poly(0.3)
     poly = np.poly1d(p_coeff)
+    
 
 # Plot original data points
     plt.plot(x, y, '.')
