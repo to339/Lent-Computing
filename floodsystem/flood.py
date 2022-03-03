@@ -53,11 +53,12 @@ def plot_water_levels(stations, dates, levels):
 #Task 2F: Chris to complete
 
 #Task 2G: Thomas to complete
-def flood_warnings(yesterdays_date, todays_date, station_needed, stations, r):
+def flood_warnings(station_needed, stations, r):
     dates, levels = fetch_measure_levels(
         station_needed.measure_id, dt=datetime.timedelta(days=1))
-    yesterdays_ratio = levels[-96]
-    day2day_ratio = stations.r - yesterdays_ratio
+    yesterdays_ratio = levels[96]
+    todays_ratio = levels[0]
+    day2day_ratio = todays_ratio - yesterdays_ratio
     #If the ratio is over 1 and rising compared to yesterday's, issue a severe flood warning
     if r > 1:
         if day2day_ratio > 0:
