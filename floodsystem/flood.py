@@ -32,7 +32,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 def stations_highest_rel_level(stations, N):
     #order the list of stations given by relative_water_level(self)
     #Print the first N stations from the list
-    ordered_stations = stations[N].sort()
+    ordered_stations = stations.r.sort()
     
     n=0
     at_risk=()
@@ -63,10 +63,48 @@ def plot_water_levels(stations, dates, levels):
 #Task 2F: Chris to complete
 
 #Task 2G: Thomas to complete
-    #If the ratio is over 1, issue a high flood warning
+def flood_warnings(yesterdays_date, todays_date, stations, r):
+    yesterdays_ratio = stations.dates(yesterdays_date)
+    day2day_ratio = stations.r - yesterdays_ratio
     #If the ratio is over 1 and rising compared to yesterday's, issue a severe flood warning
+<<<<<<< HEAD
     #If the change in ratio is over 1, issue a severe flood warning
     #If the change in ratio is over 0.75 issue a high flood warning
     #If the ratio is over 0.5 and the change in ratio is over 0.5 issue a low flood warning
     
 >>>>>>> dca5de76c1a54441c93188f53eca9cd3029fdbc1
+=======
+    if r > 1:
+        if day2day_ratio > 0:
+            print ("SEVERE FLOOD WARNING")
+    #If the ratio is over 1 and decreasing compared to yesterday issue a medium flood warning
+        elif day2day_ratio < 0:
+            print ("Medium Flood Warning")
+    #If the ratio is over 1, issue a high flood warning
+        else:
+            print ("High Flood Warning")
+    #If the ratio is over 0.5 and the change in ratio is over 1, issue a severe flood warning    
+    elif r > 0.5:
+    #If the ratio is over 0.5 and the change in ratio is over 0.75 issue a high flood warning
+        if day2day_ratio > 0.75:
+            print ("High Flood Warning")
+    #If the ratio is over 0.5 and the change in ratio is over 0.5 issue a medium flood warning
+        elif day2day_ratio > 0.5:
+            print ("Medium Flood Warning")
+    #If the ratio is over 0.5 and the change in ratio is between 0 and 0.5 issue a low flood warning
+        elif day2day_ratio > 0.5:
+            print ("Low Flood Warning")
+    #Else issue no flood warning
+    else:
+        print ("No Flood Warning")
+
+ # Test this by seeing if it issues a flood warning for any occasion that the ratio is less than 1 on a given day - 
+ # this should only occur if water levels are receding on a day after a flood warning - 
+ # in which case we leave the flood level high for safety reasons.
+
+
+
+    
+
+    
+>>>>>>> 1a42af3811c4515636f38b176c8775d6e77c658e
