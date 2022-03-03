@@ -1,9 +1,17 @@
-from floodsystem.stationdata import build_station_list
+from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level, stations_level_over_threshold
 
-stations = build_station_list()
-N = 10
-list = stations_level_over_threshold(stations,100)
-list.sort(key=lambda x:x[1])
-shortlist = stations_highest_rel_level(list, N)
-print(shortlist)
+def run():
+    stations = build_station_list()
+    update_water_levels(stations)
+
+    N = 10
+    tol = 0.8
+    list = stations_level_over_threshold(stations,tol)
+    list.sort(key=lambda x:x[1],reverse=True)
+    shortlist = stations_highest_rel_level(list, N)
+    print(shortlist)
+
+if __name__ == "__main__":
+    print("*** Task 2C: CUED Part IA Flood Warning System ***")
+    run()
