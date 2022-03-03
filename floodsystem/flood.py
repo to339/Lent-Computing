@@ -14,7 +14,7 @@ def stations_level_over_threshold(stations, tol):
     
     for station in stations:
         if station.relative_water_level() is not None and station.relative_water_level() > tol:
-            a.append((station.name,station.relative_water_level()))
+            a.append((station,station.relative_water_level()))
     return a
 
     
