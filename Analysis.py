@@ -18,8 +18,7 @@ for stations in level_values:
     dt = 2
     dates, levels = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
     
-
-    
+def polyfit(dates, levels, p):
     x = matplotlib.dates.date2num(dates)
     y = levels
 
@@ -42,4 +41,8 @@ for stations in level_values:
 # Display plot
     plt.show()
 
-plot_water_levels(stations, dates, levels)
+    plot_water_levels(stations, dates, levels)
+
+    return (poly,d0)
+
+print(polyfit(dates, levels, 4))
