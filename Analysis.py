@@ -5,7 +5,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 
 
-import datetime
+import datetime 
 
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
@@ -45,9 +45,10 @@ def run():
     dates, levels = fetch_measure_levels(
         station_cam.measure_id, dt=datetime.timedelta(days=dt))
 
+
     # Print level history
     for date, level in zip(dates, levels):
-        print(date, level)
+        print(date)
 
 
 if __name__ == "__main__":
