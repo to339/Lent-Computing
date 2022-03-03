@@ -9,9 +9,6 @@ for manipulating/modifying station data
 from re import X
 from . import datafetcher
 
-class Pet(object):
-   def my_method(self):
-      print("I am a Cat")
 
 
 
@@ -59,7 +56,7 @@ class MonitoringStation:
                 return True
     
     def relative_water_level(self):
-        a = self
+        a = self.typical_range
         print (a)
         return 0
                 

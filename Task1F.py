@@ -16,11 +16,11 @@ town = "My Town"
 s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
 
 
-s.relative_water_level()
+print (s.relative_water_level())
 stations = (build_station_list(use_cache=True))
 
 
 
 
-print ((inconsistent_typical_range_stations(stations)))
+
 
