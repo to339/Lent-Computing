@@ -25,15 +25,23 @@ def polyfit(dates, levels, p):
     x = matplotlib.dates.date2num(dates)
     y = levels
 
+    # Find coefficients of best-fit polynomial f(x) of degree 4
     d0 = x[0]
     p_coeff = np.polyfit(x-d0, y, 4)
     
+
+# Convert coefficient into a polynomial that can be evaluated,
+# e.g. poly(0.3)
     poly = np.poly1d(p_coeff)
-   
+    
+
+# Plot original data points
     plt.plot(x-d0, y, '.')
 
+# Plot polynomial fit at 30 points along interval
     plt.plot(x-d0, poly(x-d0))
 
+# Display plot
     plt.show()
 
     plot_water_levels(stations, dates, levels)
