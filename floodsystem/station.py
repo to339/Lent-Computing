@@ -6,7 +6,12 @@ for manipulating/modifying station data
 
 """
 
+from re import X
 from . import datafetcher
+
+class Pet(object):
+   def my_method(self):
+      print("I am a Cat")
 
 
 
@@ -26,6 +31,7 @@ class MonitoringStation:
         if isinstance(label, list):
             self.name = label[0]
 
+        x = typical_range
         self.coord = coord
         self.typical_range = typical_range
         self.river = river
@@ -51,6 +57,11 @@ class MonitoringStation:
                 return False
             else:
                 return True
+    
+    def relative_water_level(self):
+        a = self
+        print (a)
+        return 0
                 
     
 def inconsistent_typical_range_stations(stations):
@@ -63,7 +74,8 @@ def inconsistent_typical_range_stations(stations):
      return Answer
 
 
-        
+
+
 
         
 
