@@ -9,6 +9,6 @@ update_water_levels(stations)
 
 
 
-list = stations_level_over_threshold(stations,3)
+list = stations_level_over_threshold(stations,0.8)
 list.sort(key=lambda x:x[1])
 print(list)

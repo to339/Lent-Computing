@@ -17,7 +17,7 @@ def stations_level_over_threshold(stations, tol):
             a.append((station.name,station.relative_water_level()))
     return a
 
-    print (stations_level_over_threshold(stations,0.1))
+    
         
 #Task 2C - Thomas to complete
 def stations_highest_rel_level(list, N):
