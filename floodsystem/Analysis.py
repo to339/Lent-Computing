@@ -14,6 +14,9 @@ N = 5
 level_values = stations_highest_rel_level(stations, N)
 # Update latest level data for all stations
 update_water_levels(stations)
+
+
+
 for stations in level_values:
     dt = 2
     dates, levels = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
