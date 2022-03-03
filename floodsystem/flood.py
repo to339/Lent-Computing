@@ -1,7 +1,8 @@
 from haversine import haversine 
-from .utils import sorted_by_key
+from floodsystem.utils import sorted_by_key
 import matplotlib.pyplot as plt
 from os import stat
+import datetime
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 
@@ -54,7 +55,9 @@ def plot_water_levels(stations, dates, levels):
 
 #Task 2G: Thomas to complete
 def flood_warnings(yesterdays_date, todays_date, stations, r):
-    yesterdays_ratio = stations.dates(yesterdays_date)
+    dt=2
+    dates, levels = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
+    yesterdays_ratio = levels[-96]
     day2day_ratio = stations.r - yesterdays_ratio
     #If the ratio is over 1 and rising compared to yesterday's, issue a severe flood warning
     if r > 1:
@@ -80,24 +83,6 @@ def flood_warnings(yesterdays_date, todays_date, stations, r):
     #Else issue no flood warning
     else:
         print ("No Flood Warning")
-
-from os import stat
-from floodsystem.stationdata import build_station_list
-from floodsystem.stationdata import update_water_levels
-
-stations = build_station_list()
-
-update_water_levels(stations)
-
-def stations_level_over_threshold(stations, tol):
-    a = []
-    
-    for station in stations:
-        if station.relative_water_level() is not None and station.relative_water_level() > tol:
-            a.append((station.name,station.relative_water_level()))
-    return a
-
-print (stations_level_over_threshold(stations,0.1))
         
  # Test this by seeing if it issues a flood warning for any occasion that the ratio is less than 1 on a given day - 
  # this should only occur if water levels are receding on a day after a flood warning - 
