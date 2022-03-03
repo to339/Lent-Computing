@@ -1,13 +1,23 @@
 from haversine import haversine 
 from .utils import sorted_by_key
 import matplotlib.pyplot as plt
+from os import stat
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 
 #Task 2A - Completed for us
 
 #Task 2B - Chris to complete
+def stations_level_over_threshold(stations, tol):
+    a = []
+    
+    for station in stations:
+        if station.relative_water_level() is not None and station.relative_water_level() > tol:
+            a.append((station.name,station.relative_water_level()))
+    return a
 
+    print (stations_level_over_threshold(stations,0.1))
+        
 #Task 2C - Thomas to complete
 def stations_highest_rel_level(stations, N):
     #order the list of stations given by relative_water_level(self)
