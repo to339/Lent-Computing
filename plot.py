@@ -17,6 +17,7 @@ def plot_water_levels(station, dates, levels):
      datetime(2017, 1, 2), datetime(2017, 1, 3), datetime(2017,1,4),
      datetime (2017,1,5)]
     level = [0.2,0.7,0.95,0.92,1.02,0.91,0.64]
+    
 
     plt.plot(t,level)
 
@@ -27,6 +28,28 @@ def plot_water_levels(station, dates, levels):
 
     plt.tight_layout()
 
-    plt.show    
+    
+
+    plt.show  
 
 
+def plot_water_levels_with_fit(station, dates, levels,p):
+    x1 = []
+    poly, d0 = polyfit(dates,levels,p)
+    
+    for i in dates: 
+        x1.append(poly(matplotlib.dates.date2num(i)-d0))
+
+    plt.plot(dates,levels)
+
+    plt.xlabel("dates")
+    plt.ylabel("water level (m)")
+    plt.xticks(rotation=45);
+    plt.title(station.name)
+    plt.plot(dates,x1)
+
+    plt.tight_layout()
+
+    
+
+    plt.show() 
