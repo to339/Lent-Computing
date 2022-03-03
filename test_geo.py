@@ -2,34 +2,29 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import *
 from floodsystem.station import *
 
-<<<<<<< HEAD
 
 centre = [52.2053,0.1218]
 p = [52.2052,0.128]
 station = (build_station_list(use_cache=True))
 r=10
-=======
-stations = build_station_list()
->>>>>>> aa6f020582b730f51796e8b19d2755f49e660fad
 
 def test_rivers_with_stations():
-    river_names =  rivers_with_stations(stations)
+    river_names =  rivers_with_stations(station)
     assert(len(river_names)) >1
 
 def test_stations_by_river():
-    stations_on_rivers = stations_by_river(stations)
+    stations_on_rivers = stations_by_river(station)
     test_list = stations_on_rivers['River Pinn']
     assert(len(test_list) == 8)
 
 def test_rivers_by_station_number():
     N = 8
-    test_length = rivers_by_station_number(stations, N)
+    test_length = rivers_by_station_number(station, N)
     assert(len(test_length) == N or len(test_length) > N)
 
 
 
 test_rivers_with_stations()
-<<<<<<< HEAD
 
 def test_stations_by_distance():
     stations_names =  stations_by_distance(station,p)
@@ -48,7 +43,5 @@ def test_inconsistent_range():
     assert(len(stations_inconsistent)) >0
 
 test_inconsistent_range()
-=======
 test_rivers_by_station_number()
 test_stations_by_river()
->>>>>>> aa6f020582b730f51796e8b19d2755f49e660fad
