@@ -28,17 +28,9 @@ def run():
         print("Station {} could not be found".format(station_name))
         return
 
-    # Alternative find station 'Cam' using the Python 'next' function
-    # (https://docs.python.org/3/library/functions.html#next). Raises
-    # an exception if station is not found.
-    # try:
-    #     station_cam = next(s for s in stations if s.name == station_name)
-    # except StopIteration:
-    #     print("Station {} could not be found".format(station_name))
-    #     return
 
     # Fetch data over past 2 days
-    dt = 1000
+    dt = 7
     dates, levels = fetch_measure_levels(
         station_cam.measure_id, dt=datetime.timedelta(days=dt))
 
