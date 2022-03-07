@@ -31,11 +31,11 @@ def stations_highest_rel_level(list, N):
         n+=1
     
     return at_risk
+
 #Task 2D - completed for us
 
 #Task 2E - Thomas to complete
-def plot_water_levels(stations, dates, levels):
-    
+def plot_water_levels(stations, dates, levels, test = False):
     # Plot
     plt.plot(dates, levels)
 
@@ -47,43 +47,13 @@ def plot_water_levels(stations, dates, levels):
 
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
-
-    plt.show()
+    if not test:
+        plt.show()
 
 #Task 2F: Chris to complete
 
 #Task 2G: Thomas to complete
-def flood_warnings(station_needed, stations, r):
-    dates, levels = fetch_measure_levels(
-        station_needed.measure_id, dt=datetime.timedelta(days=1))
-    yesterdays_ratio = levels[96]
-    todays_ratio = levels[0]
-    day2day_ratio = todays_ratio - yesterdays_ratio
-    #If the ratio is over 1 and rising compared to yesterday's, issue a severe flood warning
-    if r > 1:
-        if day2day_ratio > 0:
-            return "SEVERE FLOOD WARNING"
-    #If the ratio is over 1 and decreasing compared to yesterday issue a medium flood warning
-        elif day2day_ratio < 0:
-            return "Medium Flood Warning"
-    #If the ratio is over 1, issue a high flood warning
-        else:
-            return "High Flood Warning"
-    #If the ratio is over 0.5 and the change in ratio is over 1, issue a severe flood warning    
-    elif r > 0.5:
-    #If the ratio is over 0.5 and the change in ratio is over 0.75 issue a high flood warning
-        if day2day_ratio > 0.75:
-            return "High Flood Warning"
-    #If the ratio is over 0.5 and the change in ratio is over 0.5 issue a medium flood warning
-        elif day2day_ratio > 0.5:
-            return "Medium Flood Warning"
-    #If the ratio is over 0.5 and the change in ratio is between 0 and 0.5 issue a low flood warning
-        elif day2day_ratio > 0.5:
-            return "Low Flood Warning"
-    #Else issue no flood warning
-    else:
-        return "No Flood Warning"
-        
+
  # Test this by seeing if it issues a flood warning for any occasion that the ratio is less than 1 on a given day - 
  # this should only occur if water levels are receding on a day after a flood warning - 
  # in which case we leave the flood level high for safety reasons.
