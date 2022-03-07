@@ -55,10 +55,10 @@ dt = 2
 for station, value in top_5:
     dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
     if dates:
-        
-        plot_water_levels_with_fit(station, dates, levels,4)
+        test = True
+        plot_water_levels_with_fit(station, dates, levels,4, test)
 
-assert plot_water_levels_with_fit(station, dates, levels,4) == None
+assert plot_water_levels_with_fit(station, dates, levels,4, test) == None
 
 
 

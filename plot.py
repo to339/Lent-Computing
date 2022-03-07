@@ -33,7 +33,7 @@ def plot_water_levels(station, dates, levels):
     plt.show  
 
 
-def plot_water_levels_with_fit(station, dates, levels,p):
+def plot_water_levels_with_fit(station, dates, levels,p, test = False):
     x1 = []
     poly, d0 = polyfit(dates,levels,p)
     
@@ -51,5 +51,5 @@ def plot_water_levels_with_fit(station, dates, levels,p):
     plt.tight_layout()
 
     
-
-    plt.show() 
+    if test == False:
+        plt.show() 
