@@ -13,20 +13,14 @@ update_water_levels(stations)
 
 output2B = stations_level_over_threshold(stations,0.8)
 check = len(output2B)
-if check != 0:
-    print("2B Length Check: Pass")
-else:
-    print("2BLength Check: Fail")
+assert check != 0
 
 
 #Test 2C
 N = 10
 output2C = stations_highest_rel_level(list, N)
 check = len(output2C)
-if check == N:
-    print("2C Length Check: Pass")
-else:
-    print("2C Length Check: Fail")
+assert check == N
 
 #Test 2E
 from datetime import datetime
@@ -54,10 +48,8 @@ print ("2E Output Check: Pass")
 from datetime import datetime
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.flood import *
 from floodsystem.Analysis import polyfit
 from floodsystem.flood import stations_level_over_threshold
-import datetime
 
 from plot import plot_water_levels_with_fit
 
@@ -84,4 +76,4 @@ print ("2F Output Check: Pass")
 
 
 #Test 2G
-#This has no inputs, unsure how to test this as well?
+#This has no inputs, unsure how to test this?
