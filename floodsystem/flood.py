@@ -3,6 +3,7 @@ from floodsystem.utils import sorted_by_key
 import matplotlib.pyplot as plt
 from os import stat
 import datetime
+import numpy
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 
@@ -44,9 +45,12 @@ def plot_water_levels(stations, dates, levels, test = False):
     plt.ylabel('water level (m)')
     plt.xticks(rotation=45);
     plt.title(stations.name)
-
+    low, high = stations.typical_range
+    plt.axhline(y=high, xmin=0, xmax=5, label = "Normal max")
+    plt.axhline(y=low, xmin=0, xmax= 5, label = "Normal min")
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
+    plt.legend()
     if not test:
         plt.show()
 
