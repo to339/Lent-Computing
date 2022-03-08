@@ -46,8 +46,8 @@ def plot_water_levels(stations, dates, levels, test = False):
     plt.xticks(rotation=45);
     plt.title(stations.name)
     low, high = stations.typical_range
-    plt.axhline(y=high, xmin=0, xmax=5, label = "Normal max")
-    plt.axhline(y=low, xmin=0, xmax= 5, label = "Normal min")
+    plt.axhline(y=high, xmin=0, xmax=5, label = "Normal max", color = "red")
+    plt.axhline(y=low, xmin=0, xmax= 5, label = "Normal min", color = "green")
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
     plt.legend()
