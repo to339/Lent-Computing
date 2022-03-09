@@ -8,16 +8,9 @@ import datetime
 
 from plot import plot_water_levels_with_fit
 
-def run():
-    stations = build_station_list()
 
-    update_water_levels(stations)
-    x = stations_level_over_threshold(stations,0.8)
-    x.sort(key=lambda x:x[1])
-    top_5 = x[-6:]
-    print(top_5)
+stations = build_station_list()
 
-<<<<<<< HEAD
 update_water_levels(stations)
 x = stations_level_over_threshold(stations,0.8)
 x.sort(key=lambda x:x[1])
@@ -39,17 +32,6 @@ def run():
         if dates:
             
             plot_water_levels_with_fit(station, dates, levels,4)
-    plot_water_levels(stations, dates, levels)
+    plot_water_levels(station, dates, levels)
 
 run()
-=======
-    dt = 2
-    for station, value in top_5:
-        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        if dates:
-            print(polyfit(dates, levels, 4))
-            plot_water_levels_with_fit(station, dates, levels,4)
-        
-if __name__ == "__main__":
-    run()
->>>>>>> 62cdd4b2a826244325f3864f8ed242dd9d2a22cc
