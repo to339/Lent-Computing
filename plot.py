@@ -39,9 +39,11 @@ def plot_water_levels_with_fit(station, dates, levels,p, test = False):
     
     for i in dates: 
         x1.append(poly(matplotlib.dates.date2num(i)-d0))
-
+    
+    low, high = station.typical_range
+    plt.axhline(y=high, xmin=0, xmax=5, label = "Normal max", color = "red")
+    plt.axhline(y=low, xmin=0, xmax= 5, label = "Normal min", color = "green")
     plt.plot(dates,levels)
-
     plt.xlabel("dates")
     plt.ylabel("water level (m)")
     plt.xticks(rotation=45);
